@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-"""
-Module for is_same_class method
-"""
+# 4-inherits_from.py
+"""Defines a function to check if an object is an instance of a class."""
 
 
 def inherits_from(obj, a_class):
-    """Method for comparing object classes
-    Args:
-        obj (unknown): object whose type is to be checked.
-        a_class (str): class criteria to validate.
-    Return:
-        True if obj isinstance of a_class/ class that inherits from it.
-        otherwise False
-    """
+    """Checks if an object is an inherited instance of a class.
 
+    Args:
+        obj (any): The object to check.
+        a_class (type): The class to match the type of obj to
+    Returns:
+        If obj is an inherited instance of a_class - True.
+        Otherwise - False.
+    """
     if issubclass(type(obj), a_class) and type(obj) != a_class:
-        return True
-    return False
+        return (True)
+    return (False)

@@ -1,31 +1,23 @@
 #!/usr/bin/python3
-'''script for task 13'''
+"""
+changes the name of the State object where id=2 to New Mexico from a database
+"""
 
-from model_state import State, Base
+import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from sys import argv
+from model_state import Base, State
 
 
-if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    host = 'localhost'
-    port = '3306'
-
-    engine = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}'.format(
-                           username, password, host, port, db_name),
-                           pool_pre_ping=True)
-    Session = sessionmaker(bind=engine)
-    local_session = Session()
-    states = local_session.query(State).filter(
-                           State.name.op('regexp')('.*a+.*')
-                           )
-
+if __name__ == "__main__":
+    eng = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                        .format(argv[1], argv[2], argv[3]))
+    Base.metadata.create_all(eng)
+    Session = sessionmaker(bind=eng)
+    session = Session()
+    states = session.query(State).filter(State.name.like('%a%'))
     for state in states:
-        local_session.delete(state)
-    local_session.commit()
-
-    local_session.close()
-    engine.dispose()
+        session.delete(state)
+    session.commit()
+    session.close()

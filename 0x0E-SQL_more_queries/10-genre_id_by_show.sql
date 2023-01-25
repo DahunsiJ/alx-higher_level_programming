@@ -1,9 +1,7 @@
--- Write a script that lists all shows contained in hbtn_0d_tvshows that have at least one genre linked.
-
-SELECT tv_shows.title, tv_show_genres.genre_id
-    FROM tv_genres
-    JOIN tv_show_genres
-    JOIN tv_shows
-    ON tv_shows.id = show_id
-    AND tv_genres.id = genre_id
-    ORDER BY tv_shows.title ASC, tv_show_genres.genre_id ASC;
+-- Lists all shows in hbtn_0d_tvshows that have at least one genre linked.
+-- Records are sorted by ascending tv_shows.title and tv_show_genres.genre_id.
+SELECT s.`title`, g.`genre_id`
+	FROM `tv_shows` AS s
+		INNER JOIN `tv_show_genres` AS g
+		ON s.`id` = g.`show_id`
+	ORDER BY s.`title`, g.`genre_id`;

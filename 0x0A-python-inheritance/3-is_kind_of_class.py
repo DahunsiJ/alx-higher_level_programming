@@ -1,13 +1,19 @@
 #!/usr/bin/python3
-"""
-This program validate the kind of class of an obj
-"""
+# 3-is_kind_of_class.py
+"""Define function that checks if obj isinstance of class."""
 
 
 def is_kind_of_class(obj, a_class):
+    """Checks if an object is an instance of a class or its inheritance.
+
+    Args:
+        obj (any): The object
+        a_class (type): The class to match the type of obj to.
+
+    Return:
+        If obj is exactly an instance or inheritance of a_class - True.
+        Otherwise - False.
     """
-    Returns True if the object is an instance of,
-    or if the object is an instance of a class that inherited from,
-    the specified class; otherwise False.
-    """
-    return isinstance(obj, a_class)
+    if isinstance(obj, a_class):
+        return (True)
+    return (False)

@@ -1,5 +1,7 @@
-$('document').ready(function () {
-  $.get('https://fourtonfish.com/hellosalut/?lang=fr', function (data) {
-    $('DIV#hello').text(data.hello);
-  });
+$(function () {
+  $.getJSON('https://fourtonfish.com/hellosalut/?lang=fr',
+    (res) => {
+      console.log(res);
+      $('div#hello').append(res.hello);
+    });
 });

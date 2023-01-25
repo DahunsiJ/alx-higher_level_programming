@@ -1,9 +1,7 @@
 #!/usr/bin/node
-
-const esrever = (list) => {
-  const reversedArray = [];
-  list.forEach((element) => reversedArray.unshift(element));
-  return (reversedArray);
+exports.esrever = function (list) {
+  return list.reduceRight((arr, current) => {
+    arr.push(current);
+    return arr;
+  }, []);
 };
-
-module.exports = { esrever };

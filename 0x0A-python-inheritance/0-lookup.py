@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""
-Contains definition of the function lookup
-"""
+# 0-lookup.py
+"""Define function that looks up an object's identity"""
 
 
 def lookup(obj):
-    """Returns list of attributes and methods of an object
-    Args:
-        obj (any): object whose attributes and methods are to be returned
-    """
+    """ Function returns the list of attributes and methods of an object.
 
+    Arg:
+        obj (object): The object whose identity is returned.
+    Return:
+        list of available attributes and methods in obj
+    """
     return (dir(obj))
